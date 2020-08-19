@@ -1,4 +1,4 @@
-﻿namespace SortAlgorithmTests
+﻿namespace SortAlgorithm.Tests
 {
     using System;
     using System.Collections.Generic;

@@ -8,32 +8,32 @@
 
     public class InsertSort: SortMethod
     {
-        public override int[] Sort(int[] inputArray)
+        public override void Sort(int[] inputArray)
         {
-            this.arrayToSort = inputArray;
-            if(this.arrayToSort == null)
+            if(inputArray == null)
             {
-                return null;
+                return;
             }
 
-            int length = this.arrayToSort.Length;
+            int length = inputArray.Length;
             for(int i = 1; i < length; i++)
             {
-                for(int j = i - 1; j >= 0; j--)
+                var key = inputArray[i];
+                int j = i - 1;
+                while (j >= 0)
                 {
-                    if(this.arrayToSort[j] > this.arrayToSort[j + 1])
+                    if(inputArray[j] > key)
                     {
-                        var tmp = this.arrayToSort[j + 1];
-                        this.arrayToSort[j + 1] = this.arrayToSort[j];
-                        this.arrayToSort[j] = tmp;
+                        inputArray[j + 1] = inputArray[j];
                     }
                     else
                     {
                         break;
                     }
+                    j--;
                 }
+                inputArray[j + 1] = key;
             }
-            return this.arrayToSort;
         }
     }
 }

@@ -6,8 +6,6 @@ namespace SortAlgorithm
 {
     public abstract class SortMethod
     {
-        protected int[] arrayToSort;
-
-        public abstract int[] Sort(int[] inputArray);
+        public abstract void Sort(int[] inputArray);
     }
 }
