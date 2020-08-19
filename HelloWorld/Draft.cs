@@ -1,8 +1,8 @@
-﻿using System;
-
 namespace HelloWorld
 {
-    class Program
+    using System;
+
+    class MainEntry
     {
         static void Main(string[] args)
         {

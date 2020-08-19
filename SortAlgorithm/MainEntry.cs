@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace HelloWorld
+﻿namespace SortAlgorithm
 {
+    using System;
+
     class MainEntry
     {
         static void Main(string[] args)
