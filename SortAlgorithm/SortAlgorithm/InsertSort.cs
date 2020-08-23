@@ -4,8 +4,6 @@
     using System.Collections.Generic;
     using System.Text;
 
-    using SortAlgorithm;
-
     public class InsertSort: SortMethod
     {
         public override void Sort(int[] inputArray)
