@@ -5,4 +5,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="SearchAlgorithm">
+      <HintPath>..\..\SearchAlgorithm\SearchAlgorithm\bin\Debug\netcoreapp3.1\SearchAlgorithm.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
