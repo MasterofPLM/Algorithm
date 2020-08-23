@@ -6,9 +6,10 @@
     using System;
 
     [TestFixture]
-    public class BinarySearchTests
+    public class InterpolationSearchTests
     {
-        private BinarySearch binarySearch;
+        private InterpolationSearch interpolationSearch;
+        private MergeSort mergeSort = new MergeSort();
         private ArrayGenerator arrayGenerator;
         private Random rd = new Random();
         private int[] testArray;
@@ -17,7 +18,7 @@
         [SetUp]
         public void Setup()
         {
-            this.binarySearch = new BinarySearch();
+            this.interpolationSearch = new InterpolationSearch();
             this.arrayGenerator = new ArrayGenerator();
             this.arrayGenerator.AscendGenerator(this.Length);
             this.testArray = this.arrayGenerator.output;
@@ -26,7 +27,7 @@
         [Test]
         public void BaseTest()
         {
-            int index = this.binarySearch.Search(this.testArray, this.testArray[this.Length - 1]);
+            int index = this.interpolationSearch.Search(this.testArray, this.testArray[this.Length - 1]);
 
             Assert.AreEqual(index, this.Length - 1);
         }
@@ -42,7 +43,7 @@
             var startTime = DateTime.Now;
             for (int i = 0; i < 10000; i++)
             {
-                this.binarySearch.Search(this.testArray, this.testArray[index]);
+                this.interpolationSearch.Search(this.testArray, this.testArray[index]);
             }
             var endTime = DateTime.Now;
 
@@ -54,13 +55,15 @@
         public void WorstSpeedTest()
         {
             this.Length = 1000000;
-            this.arrayGenerator.AscendGenerator(this.Length);
+            this.arrayGenerator.RandomGenerator(this.Length);
             this.testArray = this.arrayGenerator.output;
+            this.mergeSort.Sort(this.testArray);
+            int index = rd.Next(0, this.Length - 1);
 
             var startTime = DateTime.Now;
             for (int i = 0; i < 10000; i++)
             {
-                this.binarySearch.Search(this.testArray, this.testArray[this.Length - 1]);
+                this.interpolationSearch.Search(this.testArray, this.testArray[index]);
             }
             var endTime = DateTime.Now;
 
@@ -78,8 +81,8 @@
             var startTime = DateTime.Now;
             for (int i = 0; i < 10000; i++)
             {
-                this.binarySearch.Search(this.testArray, this.testArray[(this.Length - 1)/2]);
-            }
+                this.interpolationSearch.Search(this.testArray, this.testArray[this.Length - 1]);
+            }  
             var endTime = DateTime.Now;
 
             var dur = endTime.Subtract(startTime);
@@ -92,17 +95,17 @@
             this.Length = 0;
             this.arrayGenerator.AscendGenerator(this.Length);
             this.testArray = this.arrayGenerator.output;
-            int index = this.binarySearch.Search(this.testArray, this.Length + 1);
+            int index = this.interpolationSearch.Search(this.testArray, this.Length + 1);
             Assert.AreEqual(index, -1);
 
             this.Length = 1;
             this.arrayGenerator.AscendGenerator(this.Length);
             this.testArray = this.arrayGenerator.output;
-            index = this.binarySearch.Search(this.testArray, this.Length + 1);
+            index = this.interpolationSearch.Search(this.testArray, this.Length + 1);
             Assert.AreEqual(index, -1);
 
             this.testArray = null;
-            index = this.binarySearch.Search(this.testArray, this.Length + 1);
+            index = this.interpolationSearch.Search(this.testArray, this.Length + 1);
             Assert.AreEqual(index, -1);
         }
     }

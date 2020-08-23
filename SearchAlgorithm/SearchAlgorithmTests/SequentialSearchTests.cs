@@ -34,13 +34,16 @@ namespace SearchAlgorithm.Tests
         [Test]
         public void SpeedTest()
         {
-            this.Length = 100000000;
+            this.Length = 1000000;
             this.arrayGenerator.AscendGenerator(this.Length);
             this.testArray = this.arrayGenerator.output;
             int index = rd.Next(0, this.Length - 1);
 
             var startTime = DateTime.Now;
-            this.sequentialSearch.Search(this.testArray, this.testArray[index]);
+            for (int i = 0; i < 10000; i++)
+            {
+                this.sequentialSearch.Search(this.testArray, this.testArray[index]);
+            } 
             var endTime = DateTime.Now;
 
             var dur = endTime.Subtract(startTime);
@@ -50,12 +53,15 @@ namespace SearchAlgorithm.Tests
         [Test]
         public void WorstSpeedTest()
         {
-            this.Length = 100000000;
+            this.Length = 1000000;
             this.arrayGenerator.AscendGenerator(this.Length);
             this.testArray = this.arrayGenerator.output;
 
             var startTime = DateTime.Now;
-            this.sequentialSearch.Search(this.testArray, this.testArray[this.Length - 1]);
+            for (int i = 0; i < 10000; i++)
+            {
+                this.sequentialSearch.Search(this.testArray, this.testArray[this.Length - 1]);
+            }   
             var endTime = DateTime.Now;
 
             var dur = endTime.Subtract(startTime);
@@ -65,12 +71,15 @@ namespace SearchAlgorithm.Tests
         [Test]
         public void BestSpeedTest()
         {
-            this.Length = 100000000;
+            this.Length = 1000000;
             this.arrayGenerator.AscendGenerator(this.Length);
             this.testArray = this.arrayGenerator.output;
 
             var startTime = DateTime.Now;
-            this.sequentialSearch.Search(this.testArray, this.testArray[0]);
+            for (int i = 0; i < 10000; i++)
+            {
+                this.sequentialSearch.Search(this.testArray, this.testArray[0]);
+            }
             var endTime = DateTime.Now;
 
             var dur = endTime.Subtract(startTime);

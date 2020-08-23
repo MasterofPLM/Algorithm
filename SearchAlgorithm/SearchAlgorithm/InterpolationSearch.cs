@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.Text;
 
-    public class BinarySearch : SearchMethod
+    public class InterpolationSearch : SearchMethod
     {
         public override int Search(int[] inputArray, int target)
         {
@@ -18,7 +18,7 @@
             int mid;
             while (start <= end)
             {
-                mid = (start + end) / 2;
+                mid = start + ((target - inputArray[start]) / (inputArray[end] - inputArray[start]) * (end - start));
                 if (inputArray[mid] < target)
                 {
                     start = mid + 1;
