@@ -42,16 +42,5 @@
                 i--;
             }
         }
-
-        public void NoDupGenerator(int Length)
-        {
-            this.output = new int[Length];
-            var i = Length;
-            while (i > 0)
-            {
-                this.output[Length - i] = i - 1;
-                i--;
-            }
-        }
     }
 }
